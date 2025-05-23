@@ -12,7 +12,7 @@ import Avatar from '@/components/Avatar';
 import { useMutation, useQuery } from '@apollo/client';
 import { GET_CHATBOT_BY_ID } from '@/graphql/queries';
 import { GetChatbotByIdResponse, GetChatbotByIdVariables } from '@/types/types';
-import Characteristic from '@/components/ui/Characteristic';
+import Characteristic from '@/components/Characteristic';
 import { ADD_CHARACTERISTIC, DELETE_CHATBOT } from '@/graphql/mutations';
 import { redirect } from 'next/navigation';
 
