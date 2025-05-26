@@ -46,15 +46,15 @@ function Messages({
                 <Avatar 
                   seed={chatbotName}
                   className="h-12 w-12 bg-white rounded-full border-2
-                  border-[#2991EE] shadow-md"
+                  shadow-md"
                 />
               ) : (
                 <UserCircle className="text-[#2991EE] shadow-md" />
               )}
             </div>
 
-            <p
-              className={`chat-bubble text-white ${
+            <div
+              className={`chat-bubble text-white left-4 right-4 ${
                 isSender
                   ? "chat-bubble-primary bg-[#2991EE] border-[#2991EE]"
                   : "chat-bubble-secondary bg-gray-200 text-gray-700 border-gray-300"
@@ -130,7 +130,7 @@ function Messages({
                 {message.content}
                 </ReactMarkdown>
               </div>
-            </p>
+            </div>
           </div>
         );
       })};
