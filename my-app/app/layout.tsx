@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <ApolloProviderWrapper>
       <ClerkProvider>
-        <html lang="en">
+        <html lang="en" data-theme="light">
           <body className="min-h-screen flex">
             {children}
 

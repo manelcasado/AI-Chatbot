@@ -3,7 +3,26 @@ import {
     DefaultOptions,
     HttpLink,
     InMemoryCache,
+    from,
+    ApolloLink,
 } from '@apollo/client';
+
+const errorLink = new ApolloLink((operation, forward) => {
+    return forward(operation).map((response) => {
+        if (response.errors) {
+            console.error('GraphQL Errors:', response.errors);
+        }
+        return response;
+    });
+});
+
+const httpLink = new HttpLink({
+    uri: process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT,
+    headers: {
+        Authorization: `Apikey ${process.env.GRAPHQL_TOKEN}`,
+    },
+    fetch,
+});
 
 const defaultOptions: DefaultOptions = {
     watchQuery: {
@@ -21,14 +40,11 @@ const defaultOptions: DefaultOptions = {
 };
 
 export const serverClient = new ApolloClient({
-    ssrMode: true, // Disables force-fetching on the server (so queries are only run once)
-    link: new HttpLink({
-        uri: process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT, //Replace with your GraphQL endpoint
-        headers: {
-            Authorization: `Apikey ${process.env.GRAPHQL_TOKEN}`,
-        },
-        fetch,
-    }),
+    ssrMode: true,
+    link: from([errorLink, httpLink]),
     cache: new InMemoryCache(),
     defaultOptions,
+    name: 'server-client',
+    version: '1.0',
+    queryDeduplication: false,
 });
