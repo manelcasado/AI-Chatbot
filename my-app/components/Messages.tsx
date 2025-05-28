@@ -133,7 +133,7 @@ function Messages({
             </div>
           </div>
         );
-      })};
+      })}
 
       <div ref={ref} />
     </div>

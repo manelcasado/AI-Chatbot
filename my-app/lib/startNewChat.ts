@@ -34,7 +34,6 @@ async function startNewChat(
       },
     });
 
-    // TODO: FIX DAISYUI, PLUGIN MISSING !!!
     console.log("New chat session started succesfully")
     return chatSessionId;
 
