@@ -26,7 +26,7 @@ function Messages({
   }, [messages]);
 
   return (
-    <div className="flex-1 felx flex-col overflow-y-auto space-y-10 py-10
+    <div className="flex-1 flex flex-col overflow-y-auto space-y-10 py-10
     px-5 bg-white rounded-lg-2 shadow-md">
       {messages.map((message) => {
         const isSender = message.sender !== "user";
@@ -41,7 +41,7 @@ function Messages({
               </p>
             )}
 
-            <div className={`chat-image avatar w-10 ${isSender && "-mr-4"}`}>
+            <div className={`chat-image avatar w-10 ${isSender && "-mr-4 right-4"}`}>
               {isSender ? (
                 <Avatar 
                   seed={chatbotName}
@@ -49,15 +49,15 @@ function Messages({
                   shadow-md"
                 />
               ) : (
-                <UserCircle className="text-[#2991EE] shadow-md" />
+                <UserCircle className=" h-9 w-9 text-[#2991EE] rounded-full shadow-md" />
               )}
             </div>
 
             <div
-              className={`chat-bubble text-white left-4 right-4 ${
+              className={`chat-bubble text-white ${
                 isSender
                   ? "chat-bubble-primary bg-[#2991EE] border-[#2991EE]"
-                  : "chat-bubble-secondary bg-gray-200 text-gray-700 border-gray-300"
+                  : "chat-bubble-secondary bg-gray-200 text-gray-700 border-gray-300 right-1"
               }`}
             >
               {/* Tables plugin */}

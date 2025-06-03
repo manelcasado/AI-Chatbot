@@ -203,7 +203,7 @@ function ChatbotPage({ params }: { params: Promise<{ id: string }> }) {
         </DialogContent>
       </Dialog>
 
-      <div className="felx flex-col w-full max-w-3xl mx-auto bg-white md:rounded-t-lg shadow-2xl md:mt-10">
+      <div className="flex flex-col w-full max-w-3xl mx-auto bg-white md:rounded-t-lg shadow-2xl md:mt-10">
         <div className="pb-4 border-b sticky top-0 z-50 bg-[#4D7DFB] py-5 px-10 text-white md:rounded-t-lg
         flex items-center space-x-4">
           <Avatar 
