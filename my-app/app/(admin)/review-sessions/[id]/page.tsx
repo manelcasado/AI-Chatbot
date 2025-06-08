@@ -5,8 +5,10 @@ import { GetChatSessionMessagesResponse, GetChatSessionMessagesVariables } from 
 
 export const dynamic = 'force-dynamic';
 
-async function ReviewSession({params: { id } }: {params: { id: string }}) {
-  
+type ReviewSessionPageProps = { params: Promise<{ id: string }> };
+
+export default async function ReviewSession(
+  { params }: ReviewSessionPageProps) {
   const {
     data: {
       chat_sessions: {
@@ -22,7 +24,7 @@ async function ReviewSession({params: { id } }: {params: { id: string }}) {
     GetChatSessionMessagesVariables
   >({
     query: GET_CHAT_SESSION_MESSAGES,
-    variables: { id: parseInt(id) },
+    variables: { id: Number((await params).id) },
   });
   
   return (
@@ -45,7 +47,5 @@ async function ReviewSession({params: { id } }: {params: { id: string }}) {
       
       <Messages messages={messages} chatbotName={name}/>
     </div>
-  )
+  );
 }
-
-export default ReviewSession
